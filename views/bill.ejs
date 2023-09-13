@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bill Page</title>
+</head>
+<style>
+          .b{
+    width:300px;
+    height:30px;
+    background-color: red;
+    color: white;
+    }
+    body{
+        font-family: "Comic Sans MS";
+    }
+</style>
+<body>
+<center>
+  <form method="POST" action="bill.ejs">
+    <h1>Bill Information</h1>
+    <h2>Hello!!!! <%=temp_name%></h2>
+    <h3>Your Bill Price is <%= temp_bill%></h3>
+    <button class="b">Pay Now</button>
+  </form>
+</center>
+  
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .o{
+        border:2px solid black;
+        width:20%;
+    }
+    .one{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .two{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    #butt{
+        width:20%;
+        font-size: 25px;
+        background-color: red;
+    }
+    body{
+        background-color: grey;
+    }
+</style>    
+</head>
+<body>
+    <div id="form">
+        <form method="POST" action="/italian.ejs">
+            <div class="one">
+                <div class="o">
+                   <center>
+                    <br>
+                    <img src="https://i.ndtvimg.com/i/2017-09/caprese-salad_625x350_51506417724.jpg" width="80%">
+                    <h2>Caprese Salad</h2>
+                    <p>350.00</p>
+                    <input type="checkbox" value="350">Select
+                   </center>
+                   <br>
+                </div>
+                <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://i.ndtvimg.com/i/2017-09/bruschetta_625x350_71506417841.jpg" width="80%">
+                     <h2>Bruschetta</h2>
+                     <p>280.00</p>
+                     <input type="checkbox" value="280">Select
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://i.ndtvimg.com/i/2017-09/frocaccia_600x300_41506417893.jpg" width="80%">
+                     <h2>Focaccia Bread</h2>
+                     <p>500.00</p>
+                     <input type="checkbox" value="500">Select
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://i.ndtvimg.com/i/2017-09/pasta-carbonara_600x300_41506417953.jpg" width="80%">
+                     <h2>Pasta Carbonara</h2>
+                     <p>300.00</p>
+                     <input type="checkbox" value="300">Select
+                    </center>
+                    <br>
+                 </div>
+        
+            </div>
+            <br>
+            <br>
+            <div class="two">
+                <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://i.ndtvimg.com/i/2017-09/margherita-pizza_600x300_51506418004.jpg" width="80%">
+                     <h2>Margerita Pizza</h2>
+                     <p>340.00</p>
+                     <input type="checkbox" value="340">Select
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://i.ndtvimg.com/i/2017-09/risotto_625x350_81506418041.jpg" width="90%">
+                     <h2>Mushroom Risotto</h2>
+                     <p>250.00</p>
+                     <input type="checkbox" value="250">Select
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://i.ndtvimg.com/i/2017-09/pasta-con-pomodoro-e-basilico_625x350_51506418092.jpg" width="90%">
+                     <h2> Pasta Con Pomodoro E Basilico</h2>
+                     <p>399.00</p>
+                     <input type="checkbox" value="399">Select
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://i.ndtvimg.com/i/2017-09/tiramisu-the-pick-me-up-cake_625x350_81506418133.jpg" width="90%">
+                     <h2>Thiramisu</h2>
+                     <p>180.00</p>
+                     <input type="checkbox" value="180">Select
+                    </center>
+                    <br>
+                 </div>
+            </div>
+            <br>
+            <br>
+            <div>
+                <br>
+                <center><button id="submit">Order Now</button></center>
+            </div>
+            <input type="hidden" name="res" value="" id="hiddenInput">
+        </form>
+    </div>
+    <script>
+        var form=document.getElementById('form');
+        var checkBoxes = form.querySelectorAll('input[type="checkbox"]'); 
+        document.getElementById('submit').addEventListener('click', getData); 
+        let result = [];
+
+        function getData() {
+    result = [];
+    var sum = 0;
+    checkBoxes.forEach(item => {
+        if (item.checked) {
+            sum += parseInt(item.value);
+            result.push(sum);
+        }
+    });
+
+    // Set the total value in the hidden input field
+    var hiddenInput = document.getElementById('hiddenInput');
+    hiddenInput.value = JSON.stringify(result[(result.length) - 1]);
+
+    // Submit the form
+    form.submit();
+}
+
+    </script>
+</body>
+</html>

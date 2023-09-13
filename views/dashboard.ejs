@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <style>
+table th {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+  </style>
+</head>
+
+<body>
+  <center>
+    <h1>Dashboard</h1>
+  <form method="POST" action="dashboard.ejs">
+    <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Bill Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (details && (details.length > 0)) { %>
+            <% details.forEach(item => { %>
+              <tr>
+                <td><%= item.Name %></td>
+                <td><%= item.Email %></td>
+                <td><%= item.Bill_Price %></td>
+              </tr>
+            <% }); %>
+          <% } else { %>
+            <tr>
+              <td colspan="3">No data available</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+  </form>
+  </center>
+</body>
+</html>

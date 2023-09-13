@@ -1,0 +1,64 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>ADMIN</title>
+    </head>
+    <style>
+        a{
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 20px;
+    color: white;
+    font-family: "Comic Sans MS";
+}
+h1{
+    font-size: 40px;
+}
+#p{
+    font-size: 15px;
+}
+#inp{
+    height: 40px;
+    width:300px;
+}
+a{
+    text-decoration: none;
+}
+.b{
+    width:300px;
+    height:30px;
+    background-color: red;
+    color: white;
+}
+#a1{
+    color: blue;
+    font-size: 10px;
+}
+.login{
+    border:1px solid black;
+    width:40%;
+}
+    </style>
+    <body>
+        <div>
+            <form method="POST" action="/admin.ejs">
+                <center> <div class="login">
+                    <center><h1>Admin Login</h1></center>
+                      <br>
+                      <br>
+                      <br>
+                      <center><input type="email" id="inp" placeholder="Enter your Email ID" required name="email_admin"></center>
+                      <center><input type="password" id="inp" placeholder="Enter your password" name="pswd_admin"></center>
+                      <br>
+                      <center><a href="#">Send OTP</a></center>
+                      <br>
+                      <center><input type="checkbox">Remember me</center>
+                      <br>
+                      <center><button class="b">Log In</button></center>
+                      <br>
+                      <br>
+                  </div></center>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,91 @@
+a<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .one{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(63, 13, 13);
+    
+    
+    
+}
+a{
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 20px;
+    color: white;
+    font-family: "Comic Sans MS";
+}
+h1{
+    font-size: 40px;
+}
+#p{
+    font-size: 15px;
+}
+#inp{
+    height: 40px;
+    width:300px;
+}
+a{
+    text-decoration: none;
+}
+.b{
+    width:300px;
+    height:30px;
+    background-color: red;
+    color: white;
+}
+#a1{
+    color: blue;
+    font-size: 10px;
+}
+.login{
+    border:1px solid black;
+    width:40%;
+}
+</style>
+<body>
+    <div>
+        <form method="POST" action="csp3.ejs">
+            <div class="one">
+                <img src="https://img.freepik.com/premium-vector/restaurant-logo-design-template_79169-56.jpg?w=2000" width="7%" height="7%">
+                <a href="csp1.ejs">HOME</a>
+                <a href="csp2.ejs">MENU</a>
+                <a href="#">ABOUT</a>
+                <a href="https://www.google.com/maps/place/Shri+Vishnu+Engineering+College+Autonomous/@16.568119,81.5195231,17z/data=!3m1!4b1!4m6!3m5!1s0x3a37cd4eb220051d:0xea3d7b50d0a1458!8m2!3d16.568119!4d81.522098!16s%2Fg%2F1w4540xm?entry=ttu">LOCATIONS</a>
+                <a href="#">LOGIN</a>
+        </div>
+        <br>
+        <br>
+        <br>
+        <center> <div class="login">
+          <center><h1>Login</h1></center>
+            <center id="p">or <a href="signup.ejs" id="a1">Create a new Account</a></center>
+            <center id="p">or <a href="admin.ejs" id="a1"> Login as Admin</a>  </center>
+            <br>
+            <br>
+            <br>
+            <center><input type="email" id="inp" placeholder="Enter your Email ID" required name="email1"></center>
+            <center><input type="password" id="inp" placeholder="Enter your password" name="pswd1"></center>
+            <br>
+            <center><a href="#">Send OTP</a></center>
+            <br>
+            <center><input type="checkbox">Remember me</center>
+            <br>
+            <center><button class="b">Sign In</button></center>
+            <br>
+            <br>
+        </div></center>
+        </div>
+        <input type="text" id="tempInput" name="res13" class="hidden" value="<%= temp13 %>">
+        <input type="text" id="tempInput" name="res23" class="hidden" value="<%= temp23 %>">
+        </form>
+</body>
+</html>

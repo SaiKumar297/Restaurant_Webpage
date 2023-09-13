@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .o{
+        border:2px solid black;
+        width:20%;
+    }
+    .one{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .two{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    #submit{
+        width:20%;
+        font-size: 25px;
+        background-color: red;
+    }
+    body{
+        background-color: grey;
+    }
+</style>    
+</head>
+<body>
+    <div id="form">
+        <form method="POST" action="/south.ejs">
+            
+    <div class="one">
+        <div class="o">
+           <center>
+            <br>
+            <img src="https://images.slurrp.com/prod/rich_article/51ho3ce412c.webp" width="80%">
+            <h2>Fish Fry</h2>
+            <p>200.00</p>
+            <input type="checkbox" value="200">Select  
+           </center>
+           <br>
+        </div>
+        <div class="o">
+            <center>
+             <br>
+             <img src="https://recipe30.com/wp-content/uploads/2023/03/chicken-Biryani.jpg" width="80%">
+             <h2>Chicken Biryani</h2>
+             <p>280.00</p>
+             <input type="checkbox" value="280">Select  
+            </center>
+            <br>
+         </div>
+         <div class="o">
+            <center>
+             <br>
+             <img src="https://wp.scoopwhoop.com/wp-content/uploads/2014/08/567731276e510a6f3a7598c3_8.JPG" width="80%">
+             <h2>Chilli Chicken</h2>
+             <p>200.00</p>
+             <input type="checkbox" value="200">Select  
+            </center>
+            <br>
+         </div>
+         <div class="o">
+            <center>
+             <br>
+             <img src="https://bfoodale.com/uploads/2021/12/Mutton-Biryani.jpg" width="80%">
+             <h2>Mutton Biryani</h2>
+             <p>400.00</p>
+             <input type="checkbox" value="400">Select  
+            </center>
+            <br>
+         </div>
+
+    </div>
+    <br>
+    <br>
+    <div class="two">
+        <div class="o">
+            <center>
+             <br>
+             <img src="https://rakskitchen.net/wp-content/uploads/2013/08/9634876480_20d7ac8196_o.jpg" width="80%">
+             <h2>Veg Meals</h2>
+             <p>140.00</p>
+             <input type="checkbox" value="140">Select  
+            </center>
+            <br>
+         </div>
+         <div class="o">
+            <center>
+             <br>
+             <img src="https://vismaifood.com/storage/app/uploads/public/8b4/19e/427/thumb__700_0_0_0_auto.jpg" width="90%">
+             <h2>Dosa</h2>
+             <p>60.00</p>
+             <input type="checkbox" value="60">Select  
+            </center>
+            <br>
+         </div>
+         <div class="o">
+            <center>
+             <br>
+             <img src="https://c8.alamy.com/comp/2CCD862/onam-feast-kerala-ona-sadya-served-in-banana-leaf-south-indian-vegetarian-meal-2CCD862.jpg" width="90%">
+             <h2>Sadya</h2>
+             <p>230.00</p>
+             <input type="checkbox" value="230">Select  
+            </center>
+            <br>
+         </div>
+         <div class="o">
+            <center>
+             <br>
+             <img src="https://c.ndtvimg.com/2022-08/fg5hvru_south-indian-thali-onam_625x300_30_August_22.jpg?im=FaceCrop,algorithm=dnn,width=620,height=350" width="90%">
+             <h2>Tamil Thali</h2>
+             <p>180.00</p>
+             <input type="checkbox" value="180">Select  
+            </center>
+            <br>
+         </div>
+    </div>
+    <br>
+    <br>
+    <div>
+        <br>
+        <center><button id="submit">Order Now</button></center>
+    </div>
+        </form>
+        <input type="hidden" name="res" value="" id="hiddenInput">
+    </div>
+    <script>
+        var form=document.getElementById('form');
+        var checkBoxes = form.querySelectorAll('input[type="checkbox"]'); 
+        document.getElementById('submit').addEventListener('click', getData); 
+        let result = [];
+
+        function getData() {
+    result = [];
+    var sum = 0;
+    checkBoxes.forEach(item => {
+        if (item.checked) {
+            sum += parseInt(item.value);
+            result.push(sum);
+        }
+    });
+
+    // Set the total value in the hidden input field
+    var hiddenInput = document.getElementById('hiddenInput');
+    hiddenInput.value = JSON.stringify(result[(result.length) - 1]);
+
+    // Submit the form
+    form.submit();
+}
+
+    </script>
+</body>
+</html>

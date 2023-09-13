@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #a{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                
+            }
+            .b{
+                border: 1px solid black;
+                width: 20%;
+            }
+            #c{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                
+            }
+            #submit{
+        width:20%;
+        font-size: 25px;
+        background-color: red;
+    }
+    body{
+        background-color: grey;
+    }
+        </style>
+    </head>
+    <body>
+        <div id="form">
+       <form method="POST" action="/north.ejs">
+        <div id="a">
+            <div class="b">
+                <center>
+                    <br>
+                    <br>
+                    <img src="https://cdn.tasteatlas.com//images/dishes/713e5f01cbb2463386be9bc57c037639.jpg?mw=1300" width="80%">
+                    <h1>Paneer kulcha</h1>
+          <p>399.00</p>
+          <input type="checkbox" value="399">Select
+        
+                </center>  <br>
+                <br>
+                <br>
+          </div>
+          <div class="b">
+    
+            <center>
+                <br>
+                <br>
+                <img src="https://cdn.tasteatlas.com/images/dishes/e8bf8f416a4342b7ba340042778a8ddc.jpg?mw=1300" width="80%">
+                <h1>Yakhni pulao</h1><br>
+      <p>249.00</p>
+      <input type="checkbox" value="249">Select
+    
+            </center>  <br>
+      </div>
+      <div class="b">
+    
+        <center>
+            <br>
+            <br>
+            <img src="https://cdn.tasteatlas.com//images/dishes/674914a34a4c4575accc40779201e405.jpg?w=905&h=510" width="80%">
+            <h1>Aloo palak</h1>
+    <p>249.00</p>
+    <input type="checkbox" value="249">Select
+    
+        </center><br>
+    </div>
+    <div class="b">
+    
+        <center>
+            <br>
+            <br>
+            <img src="https://cdn.tasteatlas.com/images/dishes/7b9217922a6443089117597e3f6b8b64.jpg?mw=1300" width="80%">
+            <h1>Cheera thoran</h1>
+    <p>299.00</p>
+    <input type="checkbox" value="299">Select
+    
+        </center><br>
+    </div>
+          </div>
+          <br>
+          <br>
+          <div id="c">
+            <div class="b">
+                <center>
+                    <br>
+                    <br>
+                    <img src="https://i.ndtvimg.com/i/2017-06/nihari_650x400_81498470650.jpg" width="80%">
+                    <h1>classic mutton nihari </h1>
+          <p>449.00</p>
+          <input type="checkbox" value="449">Select
+          <br>
+                </center> <br>
+          </div>
+          <div class="b">
+    
+            <center>
+                <br>
+                <br>
+                <img src="https://cdn.tasteatlas.com/images/dishes/c0e708ae4fd9440a90614a17be37055e.jpg?mw=1300" width="80%">
+                <h1>Spinaci alla Romana</h1>
+      <p>340.00</p>
+      <input type="checkbox" value="340">Select
+    
+            </center>  <br>
+      </div>
+      <div class="b">
+    
+        <center>
+            <br>
+            <br>
+            <img src="https://i.ndtvimg.com/i/2018-01/butter-chicken_620x350_51517373579.jpg" width="80%">
+            <h1>Spicy chicken masala</h1>
+    <p>249.00</p>
+    <input type="checkbox" value="249">Select
+    
+        </center><br>
+    </div>
+    <div class="b">
+    
+        <center>
+            <br>
+            <br>
+            <img src="https://c.ndtvimg.com/2020-06/f0jer1ag_chicken_625x300_05_June_20.jpg" width="80%">
+            <h1>Malvani chicken curry</h1>
+    <p>329.00</p>
+    <input type="checkbox" value="329">Select
+        </center>
+        <br>
+    </div>
+          </div>
+          <br>
+        <br>
+        <div>
+            <br>
+            <center><button id="submit" >Order Now</button></center>
+        </div>
+        <input type="hidden" name="res" value="" id="hiddenInput">
+       </form>
+       </div>
+    <script>
+        var form=document.getElementById('form');
+        var checkBoxes = form.querySelectorAll('input[type="checkbox"]'); 
+        document.getElementById('submit').addEventListener('click', getData); 
+        let result = [];
+
+        function getData() {
+    result = [];
+    var sum = 0;
+    checkBoxes.forEach(item => {
+        if (item.checked) {
+            sum += parseInt(item.value);
+            result.push(sum);
+        }
+    });
+
+    // Set the total value in the hidden input field
+    var hiddenInput = document.getElementById('hiddenInput');
+    hiddenInput.value = JSON.stringify(result[(result.length) - 1]);
+
+    // Submit the form
+    form.submit();
+}
+
+    </script>
+    
+    </body>
+        </html>

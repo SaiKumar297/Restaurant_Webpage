@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .o{
+        border:2px solid black;
+        width:20%;
+    }
+    .one{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .two{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    #butt{
+        width:20%;
+        font-size: 25px;
+        background-color: red;
+    }
+    body{
+        background-color: grey;
+    }
+</style>    
+</head>
+<body>
+    <div id="form">
+        <form method="POST" action="/russian.ejs">
+            <div class="one">
+                <div class="o">
+                   <center>
+                    <br>
+                    <img src="https://www.tripsavvy.com/thmb/3KeATU0oWSNoNZK7uKUwGWRDuJE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/5033415296_4d025683af_o-5b953ba946e0fb00251ecdb5.jpg" width="80%">
+                    <h2>Borscht</h2>
+                    <p>350.00</p>
+                    <input type="checkbox" value="350">Select  
+                   </center>
+                   <br>
+                </div>
+                <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://www.tripsavvy.com/thmb/wdp4BTqslso3sVWKXpa_uGSta2s=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-556668045-5b953f7b46e0fb0050af9cce.jpg" width="80%">
+                     <h2>Shchi</h2>
+                     <p>280.00</p>
+                     <input type="checkbox" value="280">Select  
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://www.tripsavvy.com/thmb/-hdg8UDLX6j6BRB1t5B_6Obd26M=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-860056464-5b953fed46e0fb0050e7cf09.jpg" width="80%">
+                     <h2>Solyanka</h2>
+                     <p>500.00</p>
+                     <input type="checkbox" value="500">Select  
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://www.tripsavvy.com/thmb/HypYx9hdN3C1bfVSCHX7CUPWx6k=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-481788895-5b95407d46e0fb0025158801.jpg" width="80%">
+                     <h2>Ukha</h2>
+                     <p>300.00</p>
+                     <input type="checkbox" value="300">Select  
+                    </center>
+                    <br>
+                 </div>
+        
+            </div>
+            <br>
+            <br>
+            <div class="two">
+                <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://www.tripsavvy.com/thmb/VI4aeJ2RNydxGf98vDAh4ZPy08E=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-537995139-5b9540f346e0fb005023e8db.jpg" width="80%">
+                     <h2>Pirozki</h2>
+                     <p>340.00</p>
+                     <input type="checkbox" value="340">Select  
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://www.tripsavvy.com/thmb/NeM1IDX0cWPuVp8pZXQoGx76O-c=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-907621868-5b9541804cedfd002506e18e.jpg" width="90%">
+                     <h2>Pelmeni</h2>
+                     <p>250.00</p>
+                     <input type="checkbox" value="250">Select  
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://www.tripsavvy.com/thmb/Zjt_r2vCSjLZiOFJfDQFOkT3ZN4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-688354790-5b9542964cedfd002552fb19.jpg" width="90%">
+                     <h2>Blini</h2>
+                     <p>399.00</p>
+                     <input type="checkbox" value="399">Select  
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://www.tripsavvy.com/thmb/J5yFNdIv34UzlcObwR4o7LhfooQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-860900392-5b95439b46e0fb0025bf1f40.jpg" width="90%">
+                     <h2>Shashlik</h2>
+                     <p>180.00</p>
+                     <input type="checkbox" value="180">Select  
+                    </center>
+                    <br>
+                 </div>
+            </div>
+            <br>
+            <br>
+            <div>
+                <br>
+                <center><button id="submit">Order Now</button></center>
+            </div>
+            <input type="hidden" name="res" value="" id="hiddenInput">
+        </form>
+    </div>
+    <script>
+        var form=document.getElementById('form');
+        var checkBoxes = form.querySelectorAll('input[type="checkbox"]'); 
+        document.getElementById('submit').addEventListener('click', getData); 
+        let result = [];
+
+        function getData() {
+    result = [];
+    var sum = 0;
+    checkBoxes.forEach(item => {
+        if (item.checked) {
+            sum += parseInt(item.value);
+            result.push(sum);
+        }
+    });
+
+    // Set the total value in the hidden input field
+    var hiddenInput = document.getElementById('hiddenInput');
+    hiddenInput.value = JSON.stringify(result[(result.length) - 1]);
+
+    // Submit the form
+    form.submit();
+}
+
+    </script>
+</body>
+</html>

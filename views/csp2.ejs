@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .one{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(63, 13, 13);
+    
+    
+    
+}
+a{
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 20px;
+    color: white;
+    font-family: "Comic Sans MS";
+}
+.bu{
+    border: none;
+    outline: none;
+    font-weight: bolder;
+}
+.text{
+    font-size: 50px;
+    color: white;
+    position: relative;
+    top:10%;
+}
+.veg{
+    font-size: 30px;
+    position: absolute;
+    top:50%;
+    color:white;
+}
+.nonveg{
+    font-size: 30px;
+    position: absolute;
+    top:50%;
+    left:30%;
+    color:white;
+}
+.starter{
+    font-size: 30px;
+    position: absolute;
+    top:50%;
+    left:70%;
+    color:white;
+}
+#mar{
+    font-size: 40px;
+    position: absolute;
+    top:40%;
+    color:white;
+}
+#abc{
+    color: white;
+}
+#b{
+    position: absolute;
+    top:100%;
+    font-size: 30px;
+    background-color: red;
+}
+h1{
+    color:rgb(63, 13, 13);
+    font-size: 60px;
+    font-family:"Comic Sans MS" ;
+}
+#a1{
+    color:black;
+}
+#c1{
+    background-color: yellow;
+    width:20%;
+}
+#c2{
+    background-color: skyblue;
+    width:20%;
+}
+#c3{
+    background-color: red;
+    width:20%;
+}
+#c4{
+    background-color:green;
+    width:20%;
+}
+.c{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.back{
+    background-color: silver;
+}
+#h22{
+    font-size: 40px;
+    color:rgb(63, 13, 13);
+    font-family:"Comic Sans MS" ;
+}
+#a5{
+    font-size: 30px;
+    color: rgb(63, 13, 13);
+    border:2px solid black;
+    padding: 0.8%;
+    font-family: "Comic Sans MS";
+}
+#p11{
+    font-size: 30px;
+    color:rgb(63, 13, 13);
+    font-family: "Comic Sans MS";
+}
+</style>
+<body>
+    <form method="GET" action="/csp2.ejs">
+        <div>
+        <div class="one">
+            <img src="https://img.freepik.com/premium-vector/restaurant-logo-design-template_79169-56.jpg?w=2000" width="7%" height="7%">
+            <a href="csp1.ejs">HOME</a>
+            <a href="csp2.ejs">MENU</a>
+            <a href="#">ABOUT</a>
+            <a href="https://www.google.com/maps/place/Shri+Vishnu+Engineering+College+Autonomous/@16.568119,81.5195231,17z/data=!3m1!4b1!4m6!3m5!1s0x3a37cd4eb220051d:0xea3d7b50d0a1458!8m2!3d16.568119!4d81.522098!16s%2Fg%2F1w4540xm?entry=ttu">LOCATIONS</a>
+            <a href="csp3.ejs">LOGIN</a>
+        </div>
+        <div class="back">
+        <br>
+        <div>
+            <center><h1>Take Your Pick</h1></center>
+        </div>
+        <div class="c">
+            <div id="c1">
+                <a href="north.ejs" id="a1">
+                    <br>
+                    <center><h2>North India</h2>
+                        <p>Our Menu</p></center>
+                    <br>
+                </a>
+            </div>
+            <div id="c2">
+                <a href="south.ejs" id="a1">
+                    <br>
+                    <center>
+                        <h2>South India</h2>
+                    <p>Our Menu</p>
+                    </center>
+                    <br>
+                </a>
+            </div>
+            <div id="c3">
+                <a href="chinese.ejs" id="a1">
+                    <br>
+                    <center>
+                        <h2>Chinese</h2>
+                    <p>Our Menu</p>
+                    </center>
+                    <br>
+                </a>
+            </div>
+            <div id="c4">
+                <a href="italian.ejs" id="a1">
+                    <br>
+                    <center>
+                        <h2>Italian</h2>
+                    <p>Our Menu</p>
+                    </center>
+                    <br>
+                </a>
+            </div>
+
+        </div>
+        <br>
+        <br>
+        <br>
+        </div>
+        <br>
+        <br>
+        <center>
+            <div class="new">
+                <img src="https://www.lacademie.com/wp-content/uploads/2022/01/popular-russian-foods.jpg" width="40%">
+                <h2 id="h22">New Russian Menu has landed</h2>
+                <p id="p11">see our menu here</p>
+                <br>
+                <a href="russian.ejs" id="a5">See menu</a>
+            </div>
+        </center>
+        <br>
+        <br>
+    </div>
+    </form>
+    
+</body>
+</html>

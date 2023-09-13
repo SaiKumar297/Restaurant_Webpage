@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .o{
+        border:2px solid black;
+        width:20%;
+    }
+    .one{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .two{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    #submit{
+        width:20%;
+        font-size: 25px;
+        background-color: red;
+    }
+    body{
+        background-color: grey;
+    }
+</style>    
+</head>
+<body>
+    <div id="form">
+        <form method="POST" action="/chinese.ejs">
+        
+            <div class="one">
+                <div class="o">
+                   <center>
+                    <br>
+                    <img src="https://images.chinahighlights.com/allpicture/2019/11/31acb7b302ec4b48b17443ed_cut_750x400_39.webp" width="80%">
+                    <h2>Kung Pao Kitchen</h2>
+                    <p>350.00</p>
+                    <input type="checkbox" value="350">Select
+                   </center>
+                   <br>
+                </div>
+                <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://images.chinahighlights.com/allpicture/2019/11/a4ad4a7fe0cb401cb0be6383_cut_750x400_39.webp" width="80%">
+                     <h2>Sweet and Sour Pork</h2>
+                     <p>280.00</p>
+                     <input type="checkbox" value="280">Select
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://images.chinahighlights.com/allpicture/2019/01/482fb1f829ce4e6496b94fea_cut_750x400_39.webp" width="80%">
+                     <h2>Hot Pot</h2>
+                     <p>500.00</p>
+                     <input type="checkbox" value="500">Select
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://images.chinahighlights.com/allpicture/2018/08/16d96371fd2944be86ffbdc1_cut_750x400_39.webp" width="80%">
+                     <h2>Dim Sum</h2>
+                     <p>300.00</p>
+                     <input type="checkbox" value="300">Select
+                    </center>
+                    <br>
+                 </div>
+        
+            </div>
+            <br>
+            <br>
+            <div class="two">
+                <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://images.chinahighlights.com/allpicture/2021/12/d247e7d25b164b77841f6022_cut_750x400_39.webp" width="80%">
+                     <h2>Pecking Roasted Duck</h2>
+                     <p id="duck">340.00</p>
+                     <input type="checkbox" value="340">Select
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://images.chinahighlights.com/allpicture/2019/01/9b7159f6d89449d997eaa5ab_cut_750x400_39.webp" width="90%">
+                     <h2>Dumplings</h2>
+                     <p>250.00</p>
+                     <input type="checkbox" value="250">Select
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://images.chinahighlights.com/allpicture/2019/11/62745d5a726045e4a99a3885_cut_750x400_39.webp" width="90%">
+                     <h2>Ma Po Tofu</h2>
+                     <p>399.00</p>
+                     <input type="checkbox" value="399">Select
+                    </center>
+                    <br>
+                 </div>
+                 <div class="o">
+                    <center>
+                     <br>
+                     <img src="https://images.chinahighlights.com/allpicture/2021/12/a57fdce570494d41b624119d_cut_750x400_39.webp" width="90%">
+                     <h2>char Siu</h2>
+                     <p>180.00</p>
+                     <input type="checkbox" value="180">Select  
+                    </center>
+                    <br>
+                 </div>
+            </div>
+            <br>
+            <br>
+            <div>
+                <br>
+                <center><button id="submit">Order Now</button></center>
+            </div>
+            <div>
+                <h1>Total ordered:</h1>
+            </div>
+            <input type="hidden" name="res" value="" id="hiddenInput">
+            </form>
+
+    </div>
+    
+    <script>
+        var form=document.getElementById('form');
+        var checkBoxes = form.querySelectorAll('input[type="checkbox"]'); 
+        document.getElementById('submit').addEventListener('click', getData); 
+        let result = [];
+
+        function getData() {
+    result = [];
+    var sum = 0;
+    checkBoxes.forEach(item => {
+        if (item.checked) {
+            sum += parseInt(item.value);
+            result.push(sum);
+        }
+    });
+
+    // Set the total value in the hidden input field
+    var hiddenInput = document.getElementById('hiddenInput');
+    hiddenInput.value = JSON.stringify(result[(result.length) - 1]);
+
+    // Submit the form
+    form.submit();
+}
+
+    </script>
+</body>
+</html>
