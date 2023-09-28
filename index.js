@@ -1,11 +1,17 @@
 const express = require("express");
 const bp = require('body-parser')
 const app = express();
-const ejs = require('ejs')
+const ejs = require('ejs');
+const bcrypt = require('bcrypt');
 const { initializeApp, cert } = require('firebase-admin/app');
 const { getFirestore } = require('firebase-admin/firestore');
+const session = require("express-session");
 var serviceAccount = require("./key.json");
-
+app.use(session({
+  secret: 'your-secret-key',
+  resave: true,
+  saveUninitialized: true,
+}));
 initializeApp({
     credential: cert(serviceAccount)
 });
@@ -14,6 +20,7 @@ const db = getFirestore();
 
 app.set('view engine', 'ejs');
 app.use(bp.urlencoded({ extended: true }));
+
 app.get('/', (req, res) => {
     res.render('csp1.ejs');
     
@@ -22,7 +29,7 @@ app.get('/csp2.ejs',(req,res)=>{
   res.render('csp2.ejs');
 });
 app.get('/csp3.ejs',(req,res)=>{
-  res.render('csp3.ejs',{temp13:null,temp23:null});
+  res.render('csp3.ejs',{temp23:null});
 });
 app.get('/chinese.ejs',(req,res)=>{
   res.render('chinese.ejs');
@@ -65,74 +72,108 @@ app.get('/succ.ejs',(req,res)=>{
 
 app.post('/chinese.ejs', (req, res) => {
   const price = req.body.res;
-  res.render('signup.ejs',{temp:price});
+  req.session.x=price;
+  res.render('csp3.ejs',{temp23:price});
 });
 
 app.post('/north.ejs', (req, res) => {
   const price = req.body.res;
-  res.render('signup.ejs',{temp:price});
+  req.session.x=price;
+  res.render('csp3.ejs',{temp23:price});
 });
 
 app.post('/south.ejs', (req, res) => {
   const price = req.body.res;
-  res.render('signup.ejs',{temp:price});
+  req.session.x=price;
+  res.render('csp3.ejs',{temp23:price});
 });
  
 app.post('/italian.ejs', (req, res) => {
   const price = req.body.res;
-  res.render('signup.ejs',{temp:price});
+  req.session.x=price;
+  res.render('csp3.ejs',{temp23:price});
 });
 
 app.post('/russian.ejs', (req, res) => {
   const price = req.body.res;
-  res.render('signup.ejs',{temp:price});
+  req.session.x=price;
+  res.render('csp3.ejs',{temp23:price});
 });
 
 
-app.post('/signup.ejs', (req, res) => {
+app.post('/signup.ejs', async (req, res) => {
   const name = req.body.username;
-  const email=req.body.email;
-  const pwd=req.body.pswd;
-  const pri=req.body.res1;
+  req.session.y = name;
+  const email = req.body.email;
+  const password = req.body.pswd; 
+  const pri = req.session.x || 0; 
+  try {
+   
+    const querySnapshot = await db.collection('details').where('Email', '==', email).get();
 
+    if (!querySnapshot.empty) {
+      
+      res.render('signup.ejs', { temp: 'Email is already registered' });
+    } else {
+    
+      const saltRounds = 10;
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-  // Create an object with the data to be added
-  const data = {
-    Name: name,
-    Email: email,
-    Password: pwd,
-    Bill_Price: pri
-  };
-console.log(data);
-  // Add the data to the Firestore collection
-  db.collection('details').add(data)
-    .then(() => {
-      res.render("csp3.ejs",{temp13:name,temp23:pri});
-    })
-    .catch(error => {
-      console.error("Error adding document: ", error);
-      res.status(500).send("Error adding document to Firestore.");
-    });
+     
+      const data = {
+        Name: name,
+        Email: email,
+        Password: hashedPassword, 
+        Bill_Price: pri,
+      };
+
+   
+      await db.collection('details').add(data);
+
+      res.render('csp3.ejs');
+    }
+  } catch (error) {
+    console.error('Error adding document: ', error);
+    res.status(500).send('Error adding document to Firestore.');
+  }
 });
-app.post('/csp3.ejs', (req, res) => {
+
+
+  
+
+app.post('/csp3.ejs', async (req, res) => {
   const email = req.body.email1;
   const password = req.body.pswd1;
-  const name1=req.body.res13;
-  const pri1=req.body.res23;
-  db.collection('details')
-  .where("Email","==",email)
-  .where("Password","==",password)
-  .get()
-  .then((docs)=>{
-    if(docs.size>0)
-    {
-      res.render("bill.ejs",{temp_name:name1,temp_bill:pri1});
+
+  try {
+   
+    const querySnapshot = await db.collection('details').where('Email', '==', email).get();
+
+    if (!querySnapshot.empty) {
+      const user = querySnapshot.docs[0].data();
+      const hashedPassword = user.Password;
+
+   
+      const passwordMatch = await bcrypt.compare(password, hashedPassword);
+
+      if (passwordMatch) {
+   
+        res.render('bill.ejs', { temp_bill: req.session.x, temp_name: req.session.y });
+      } else {
+      
+        res.send('Incorrect password.');
+      }
+    } else {
+      res.send('User not found.');
     }
-    else{
-      res.send("Unsuccessful Login");
-    }
-  });
+  } catch (error) {
+    console.error('Error: ', error);
+    res.status(500).send('Error during login.');
+  }
 });
+
+
+
 
 app.post('/admin.ejs', (req, res) => {
   const email = req.body.email_admin;
